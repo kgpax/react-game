@@ -7,6 +7,7 @@ import CannonBase from "./CannonBase";
 import CannonPipe from "./CannonPipe";
 import CannonBall from "./CannonBall";
 import CurrentScore from "./CurrentScore";
+import FlyingObject from "./FlyingObject";
 
 const Canvas = props => {
   const viewBox = [
@@ -34,6 +35,8 @@ const Canvas = props => {
       <CannonPipe rotation={props.angle} />
       <CannonBase />
       <CurrentScore score={15} />
+      <FlyingObject position={{ x: -150, y: -300 }} />
+      <FlyingObject position={{ x: 150, y: -300 }} />
     </svg>
   );
 };
