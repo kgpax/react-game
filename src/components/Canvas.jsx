@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { gameHeight } from "../utils/constants";
 
 import Sky from "./Sky";
 import Ground from "./Ground";
@@ -12,7 +13,6 @@ import StartGame from "./StartGame";
 import Title from "./Title";
 
 const Canvas = props => {
-  const gameHeight = 1200;
   const viewBox = [
     window.innerWidth / -2,
     100 - gameHeight,
@@ -47,11 +47,13 @@ const Canvas = props => {
 
       {props.gameState.started && (
         <g>
-          <FlyingObject position={{ x: -150, y: -300 }} />
-          <FlyingObject position={{ x: 150, y: -300 }} />
           <Heart position={{ x: -300, y: 35 }} />
         </g>
       )}
+
+      {props.gameState.flyingObjects.map(flyingObject => (
+        <FlyingObject key={flyingObject.id} position={flyingObject.position} />
+      ))}
     </svg>
   );
 };
