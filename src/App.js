@@ -10,10 +10,7 @@ class App extends Component {
     this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentDidMount() {
-    const self = this;
-    setInterval(() => {
-      self.props.moveObjects(self.canvasMousePosition);
-    }, 10);
+    this.update();
     window.onresize = () => {
       const cnv = document.getElementById("aliens-go-home-canvas");
       cnv.style.width = `${window.innerWidth}px`;
@@ -31,6 +28,12 @@ class App extends Component {
         trackMouse={event => this.trackMouse(event)}
       />
     );
+  }
+  update() {
+    this.props.moveObjects(this.canvasMousePosition);
+    requestAnimationFrame(() => {
+      this.update();
+    });
   }
 }
 
