@@ -46,3 +46,9 @@ export const getCanvasPosition = event => {
   const { x, y } = point.matrixTransform(svg.getScreenCTM().inverse());
   return { x, y };
 };
+
+export const checkCollision = (rectA, rectB) =>
+  rectA.x1 < rectB.x2 &&
+  rectA.x2 > rectB.x1 &&
+  rectA.y1 < rectB.y2 &&
+  rectA.y2 > rectB.y1;
